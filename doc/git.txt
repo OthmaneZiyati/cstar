@@ -1,0 +1,21 @@
+# Set an alias to current git project
+git remote add cstar https://github.com/Louis-Melliorat/cstar.git
+
+# Pull code
+git pull cstar <branch>
+
+# If you know something went wrong before you push
+git fetch
+git pull
+
+## Make a change
+# Add or remove file depending on what change you've done
+git add <files> 
+git add -A
+git rm <files>
+# check what you are going to send
+git status
+# Group your modifications and prepare it to be send to github
+git commit -m "<commit message : must be given to know what have been modified>"
+# Send your commit
+git push cstar <branch>
