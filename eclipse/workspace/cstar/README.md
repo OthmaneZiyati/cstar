@@ -14,4 +14,7 @@ Go to 	: windows->preferences->java->installed jre->Execution Environment
 #Run project		
 Right click on cstar project->Run As->Maven Build
 Write in Goal box : "spring-boot:run"
+
+#Browser
+htpp://localhost:8080/hello
 		
