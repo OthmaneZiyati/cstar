@@ -16,5 +16,5 @@ Right click on cstar project->Run As->Maven Build
 Write in Goal box : "spring-boot:run"
 
 #Browser
-htpp://localhost:8080/hello
+http://localhost:8080/hello
 		
