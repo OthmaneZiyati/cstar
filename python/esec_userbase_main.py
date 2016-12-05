@@ -53,7 +53,7 @@ logger.info("Creating dictionnary of users")
 dictUsers = dict()
 
 def writeuserbase(day):
-    ''' For each user in the user dictionnary, this function create a row 
+    ''' For each user in the user dictionnary, this function create a row
     in a csv file where colomns are feature
     There is one csv file per day'''
     global dictUsers
@@ -66,7 +66,7 @@ def writeuserbase(day):
             for u in dictUsers:
              wr.writerow(dictUsers[u].createRow())
     dictUsers = {}
-    
+
 def estimateRemainingTime():
      if cmpt_file>1:
         currenttime = time.time()
@@ -79,7 +79,7 @@ def estimateRemainingTime():
                      dt.datetime.fromtimestamp(starttime+remainingtime)))
 
 for f in listInputFiles:
-  
+
     cmpt_file+=1
     logger.info("Reading file  : {0} ({1}/{2})".format(f, cmpt_file, nb_files))
     estimateRemainingTime()
@@ -89,7 +89,7 @@ for f in listInputFiles:
         compt_bad_rows=0
         for row in reader:
 #            i+=1
-#            if i==10: 
+#            if i==10:
 #                break # use only the first 30 rows to test your code
             if (len(row)>18):
                 tmplog = Log(row)
@@ -107,20 +107,18 @@ for f in listInputFiles:
                 compt_bad_rows+=1
         logger.warn(\
             "This file contains {0} rows that could not have been parsed".\
-            format(compt_bad_rows))        
+            format(compt_bad_rows))
         inputfile.close()
     except IOError as e:
         logger.error("Has encountred I/O error " + e.message)
     except:
         logger.error("Has encountred an unexpected error")
 
-writeuserbase(prevday)       
+writeuserbase(prevday)
 
 
 
 logger.info("===========================================")
 logger.info("End file processing")
-logger.info("===========================================")            
+logger.info("===========================================")
 handler.close()
-        
-
