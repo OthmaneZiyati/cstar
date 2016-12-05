@@ -149,22 +149,19 @@ Bigdata = pd.concat([df_1_clean,center_cluster], axis=0)
 pca = decomposition.PCA()
 pca.fit(Bigdata)
 X = pca.transform(Bigdata)
-#plt.scatter(X[:,0], X[:,1])
-#plt.scatter(X[:,0], X[:,1],c=Bigdata.cluster)
-#plt.show()
+plt.scatter(X[:,0], X[:,1])
 
-
+# Coordonate of cluster centers in PCA
 comp = pd.DataFrame(pca.components_.T, index=Bigdata.columns)
-
 comp_cluster = pd.DataFrame(X[-KMEANS_N_CLUSTERS:], index=center_cluster.index)
 
-
-#print(pca.explained_variance_ratio_)
-#biplot(Bigdata.loc[:, Bigdata.columns != 'cluster'],1,2)
+# Biplot
+biplot(Bigdata.loc[:, Bigdata.columns != 'cluster'],1,2)
 
 
 # ------------------------------ Jumpers --------------------------------- #
 
+# Distance max between day1 and day2
 shared_users = list(set(df_1_clean.index) & set(df_2.index))
 dist = pd.DataFrame(shared_users, columns = ['username']) 
 dist['d'] = distance(df_1_clean.loc[shared_users,:].values,
@@ -177,24 +174,12 @@ jump1 = df_1.loc[jumpers,:]
 jump2 = df_2.loc[jumpers,:]
 
 
-# 
+# Coordinate of NB_JUMPERS in PCA
 xstart = np.dot(pca.components_[0],jump1.T)
 xend = np.dot(pca.components_[0],jump2.T)
 
 ystart = np.dot(pca.components_[1],jump1.T)
 yend = np.dot(pca.components_[1],jump2.T)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
